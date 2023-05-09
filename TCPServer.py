@@ -1,39 +1,28 @@
 import socket
 
+# Lista de palavras disponíveis com suas respectivas traduções
+palavras_disponiveis = {
+    'casa': 'house',
+    'carro': 'car',
+    'escola': 'school',
+    'trabalho': 'work',
+    'telefone': 'phone',
+    'computador': 'computer',
+    'música': 'music',
+    'livro': 'book',
+    'tempo': 'time'
+}
 
-def traduzir(palavra):
-    if palavra == 'casa':
-        return 'house'
-    elif palavra == 'carro':
-        return 'car'
-    elif palavra == 'escola':
-        return 'school'
-    elif palavra == 'trabalho':
-        return 'work'
-    elif palavra == 'telefone':
-        return 'phone'
-    elif palavra == 'computador':
-        return 'computer'
-    elif palavra == 'música':
-        return 'music'
-    elif palavra == 'livro':
-        return 'book'
-    elif palavra == 'tempo':
-        return 'time'
-    else:
-        return 'Palavra não encontrada no dicionário.'
+
+# Função responsavel pelas traduções. Se a palavra não existir na lista eu retorno uma mensagem default.
+def traduzir_palavras_para_ingles(palavra):
+    return palavras_disponiveis.get(palavra, 'Palavra não encontrada no dicionário.')
 
 
 def main():
     # Configurações do servidor
     HOST = 'localhost'
     PORT = 12003
-
-    # Lista de palavras disponíveis
-    palavras_disponiveis = [
-        'casa', 'carro', 'escola', 'trabalho', 'telefone',
-        'computador', 'música', 'livro', 'tempo'
-    ]
 
     # Criação do socket TCP/IP
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -64,7 +53,7 @@ def main():
             print(f"Palavra recebida: {data}")
 
             # Realiza a tradução
-            resultado = traduzir(data)
+            resultado = traduzir_palavras_para_ingles(data)
             print(f"Tradução: {resultado}")
 
             # Envia a resposta ao cliente
@@ -73,7 +62,6 @@ def main():
         # Fecha o socket do cliente
         client_socket.close()
         print(f"Conexão com {client_address} finalizada")
-
 
 
 if __name__ == '__main__':
