@@ -2,15 +2,15 @@ import socket
 
 # Lista de palavras disponíveis com suas respectivas traduções
 palavras_disponiveis = {
-    'casa': 'house',
-    'carro': 'car',
-    'escola': 'school',
-    'trabalho': 'work',
-    'telefone': 'phone',
+    'protocolo': 'protocol',
+    'roteador': 'router',
+    'rede': 'network',
+    'servidor': 'server',
+    'cliente': 'client',
     'computador': 'computer',
-    'música': 'music',
-    'livro': 'book',
-    'tempo': 'time'
+    'porta': 'port',
+    'conexão': 'connection',
+    'atraso': 'delay'
 }
 
 

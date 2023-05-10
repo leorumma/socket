@@ -1,26 +1,20 @@
 import socket
 
-def traduzir(palavra):
-    if palavra == 'casa':
-        return 'house'
-    elif palavra == 'carro':
-        return 'car'
-    elif palavra == 'escola':
-        return 'school'
-    elif palavra == 'trabalho':
-        return 'work'
-    elif palavra == 'telefone':
-        return 'phone'
-    elif palavra == 'computador':
-        return 'computer'
-    elif palavra == 'música':
-        return 'music'
-    elif palavra == 'livro':
-        return 'book'
-    elif palavra == 'tempo':
-        return 'time'
-    else:
-        return 'Palavra não encontrada no dicionário.'
+# Lista de palavras disponíveis com suas respectivas traduções
+palavras_disponiveis = {
+    'protocolo': 'protocol',
+    'roteador': 'router',
+    'rede': 'network',
+    'servidor': 'server',
+    'cliente': 'client',
+    'computador': 'computer',
+    'porta': 'port',
+    'conexão': 'connection',
+    'atraso': 'delay'
+}
+
+def traduzir_palavras_para_ingles(palavra):
+    return palavras_disponiveis.get(palavra, 'Palavra não encontrada no dicionário.')
 
 def main():
     servidor_ip = '127.0.0.1'
@@ -44,7 +38,7 @@ def main():
             break
 
         # Traduz a palavra
-        traducao = traduzir(palavra.lower())
+        traducao = traduzir_palavras_para_ingles(palavra.lower())
 
         # Envia a tradução para o cliente
         servidor_socket.sendto(traducao.encode(), cliente_endereco)
